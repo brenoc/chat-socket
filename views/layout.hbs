@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>{{title}}</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="/css/styles.min.css"/>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"/>
+</head>
+<body>
+  <nav class="navabar navbar-default" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <a href="#">Chat room</a>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    {{{body}}}
+  </div>
+
+  {{#ifvalue settings.env value="development"}}
+    <script src="http://localhost:35729/livereload.js"></script>
+  {{/ifvalue}}
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>
