@@ -32,3 +32,6 @@ models/*.js
 controllers/*.js
 routes/*.js
 public/js/*
+
+dest
+src

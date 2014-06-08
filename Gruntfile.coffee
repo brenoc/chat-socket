@@ -5,7 +5,7 @@ module.exports = (grunt) ->
         files:
           # add your css files over here to concatenate all css files
           # let's save our site users some bandwith
-          src: ['public/vendor/bootstrap/dist/css/bootstrap.min.css', 'public/css/styles.min.css']
+          src: ['public/css/styles.min.css']
           dest: 'public/css/app.styles.min.css'
     uglify:
       options:
@@ -13,7 +13,7 @@ module.exports = (grunt) ->
           except: ['jQuery']
       target:
         # add your js files over here to minify them into one javascript source file
-        'public/js/app.min.js': ['public/vendor/jquery/dist/jquery.min.js', 'public/vendor/bootstrap/dist/js/bootstrap.min.js', 'public/js/main.js']
+        'public/js/app.min.js': ['public/js/main.js']
     coffee:
       src:
         files: [
@@ -36,6 +36,13 @@ module.exports = (grunt) ->
             cwd: 'controllers'
             src: '**/*.coffee'
             dest: 'controllers'
+            ext: '.js'
+          },
+          {
+            expand: true
+            cwd: 'socket'
+            src: '**/*.coffee'
+            dest: 'socket'
             ext: '.js'
           },
           {
@@ -76,7 +83,7 @@ module.exports = (grunt) ->
         files: 'public/js/**/*.js'
         tasks: ['uglify']
       coffee:
-        files: ['public/coffee/**/*.coffee', 'controllers/**/*.coffee', 'models/**/*.coffee', 'routes/**/*.coffee']
+        files: ['public/coffee/**/*.coffee', 'controllers/**/*.coffee', 'models/**/*.coffee', 'socket/**/*.coffee', 'routes/**/*.coffee']
         tasks: ['coffee']
       less:
         files: ['public/less/**/*.less']
