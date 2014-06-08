@@ -1,11 +1,5 @@
 module.exports = (grunt) ->
   config=
-    jshint:
-      options:
-        ignores: ['node_modules/**', 'public/vendor/**', '**/*.min.js']
-        jshintrc: '.jshintrc'
-      server: ['controllers/**/*.js', 'models/**/*.js', 'routes/**/*.js', 'app.js', 'config.js']
-      client: 'public/js/**/*.js'
     concat:
       css:
         files:
@@ -80,10 +74,7 @@ module.exports = (grunt) ->
           livereload: true
       scripts:
         files: 'public/js/**/*.js'
-        tasks: ['jshint:client', 'uglify']
-      server:
-        files: '<%= jshint.server %>'
-        tasks: 'jshint:server'
+        tasks: ['uglify']
       coffee:
         files: ['public/coffee/**/*.coffee', 'controllers/**/*.coffee', 'models/**/*.coffee', 'routes/**/*.coffee']
         tasks: ['coffee']
@@ -101,4 +92,4 @@ module.exports = (grunt) ->
   # Load the tasks
 
   require('matchdep').filterDev('grunt-*').forEach @loadNpmTasks
-  @registerTask 'default', ['uglify', 'coffee', 'jshint', 'less', 'cssmin', 'concat:css', 'concurrent']
+  @registerTask 'default', ['uglify', 'coffee', 'less', 'cssmin', 'concat:css', 'concurrent']
